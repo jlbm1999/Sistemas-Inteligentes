@@ -25,7 +25,7 @@ empty = 12
 
 # number of pieces
 diffPieces = 12
-numPieces = [8,2,2,2,1,1,8,2,2,2,1,1]
+
 
 # name (and letter) of each piece
 names = ["wPawn", "wRook", "wBishop", "wkNnight", "wQueen", "wKing", "bPawn", "bRook", "bBishop", "bkNightight", "bQueen", "bKing"]
@@ -54,6 +54,7 @@ def getColorPiece(piece):
 # @return the initial state (board and agent)
 
 def getProblemInstance(n, p, seed, agent): 
+	numPieces = [8,2,2,2,1,1,8,2,2,2,1,1]
 	board = [[empty for i in range(n)] for j in range(n)]
 
 	random.seed(seed)

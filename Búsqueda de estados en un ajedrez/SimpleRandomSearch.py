@@ -1,6 +1,6 @@
-#import java.util.ArrayList;
-#import java.util.Hashtable;
-#import java.util.Random;
+# import java.util.ArrayList;
+# import java.util.Hashtable;
+# import java.util.Random;
 
 # this class implements a simple search method which explores a single sequence of actions.
 # The process is quite simple. At each state we look for the agent possible actions and choose one at random.
@@ -21,7 +21,9 @@ from Knight import Knight
 from Queen import Queen
 from Bishop import Bishop
 from Node import Node
-from SearchClass import *
+from time import time
+import statistics
+
 
 class SimpleRandomSearch:
 	# member variables
@@ -50,22 +52,6 @@ class SimpleRandomSearch:
 			self.m_piece = Rook(0)
 		elif s0.m_agent == Utils.bRook:
 			self.m_piece = Rook(1)
-		elif s0.m_agent == Utils.wKing:
-			self.m_piece = King(0)
-		elif s0.m_agent == Utils.bKing:
-			self.m_piece = King(1)
-		elif s0.m_agent == Utils.wKnight:
-			self.m_piece = Knight(0)
-		elif s0.m_agent == Utils.bKnight:
-			self.m_piece = Knight(1)
-		elif s0.m_agent == Utils.wBishop:
-			self.m_piece = Bishop(0)
-		elif s0.m_agent == Utils.bBishop:
-			self.m_piece = Bishop(1)
-		elif s0.m_agent == Utils.wQueen:
-			self.m_piece = Queen(0)
-		elif s0.m_agent == Utils.bQueen:
-			self.m_piece = Queen(1)
 		else:
 			# define the rest of pieces
 			print("Chess piece not implemented")
@@ -88,14 +74,14 @@ class SimpleRandomSearch:
 			else:
 				# generate successors
 				possibleActions = self.m_piece.getPossibleActions(current)
-				for a in possibleActions:
-					print (a.m_initPos, a.m_finalPos)
+				#for a in possibleActions:
+				#	print (a.m_initPos, a.m_finalPos)
 				#rnd = random.randint(0,len(possibleActions)-1)
 				#print(len(possibleActions), rnd)
 				if len(possibleActions) == 0:
 					break
 				action = possibleActions[random.randint(0,len(possibleActions)-1)]
-				print(action.m_initPos, action.m_finalPos)
+				#print(action.m_initPos, action.m_finalPos)
 				self.m_solution.append(action)
 				self.m_cost += action.getCost()
 				current = current.applyAction(action)
@@ -107,7 +93,7 @@ class SimpleRandomSearch:
 
 
 if __name__ == '__main__':
-	print(len(sys.argv))
+	#print(len(sys.argv))
 
 	if (len(sys.argv) != 6):
 		print("\n**Sorry, correct usage require 5 params:")
@@ -140,13 +126,6 @@ if __name__ == '__main__':
 			print("\nSorry: bad selected agent, modified to 1 (white rook)")
 			agent = Utils.wRook
 
-		# size = 8
-		# density = 1.0
-		# seed1 = 1774
-		# agent = Utils.wBishop
-		# seed2 = 2022
-
-
 		# getting the initial state
 		state = Utils.getProblemInstance(size, density, seed1, agent)
 		Utils.printBoard(state)
@@ -167,4 +146,3 @@ if __name__ == '__main__':
 			Utils.printBoard(finalState)
 
 		print()
-

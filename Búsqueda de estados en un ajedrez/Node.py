@@ -19,13 +19,10 @@ class Node:
         if(self.state.isFinal()): return True
     
     # Puesto que la cola de prioridad no permite comparar nodos como tal, necesitamos este método.
-    # De esta manera, se fuerza a que la comparación sea por el coste y no por el nodo como tal.
+    # De esta manera, se fuerza a que la comparación sea por la y no por el nodo como tal.
+    # En el caso del coste uniforme, la variable heurística contiene el coste, por lo que nos sirve también para ese algoritmo.
     def __lt__(self, other):
-        if((self.heuristic == None) or (other.heuristic == None)):  # Si la heurística de algún nodo es None, es no informada
-            if(self.cost < other.cost):
-                return self.cost < other.cost 
-        else:
-            return self.heuristic < other.heuristic
+        return self.heuristic < other.heuristic
 
     
 

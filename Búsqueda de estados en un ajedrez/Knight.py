@@ -27,9 +27,6 @@ class Knight(Piece):
         else:                   # Black Knight
             oponent_color = 0
 
-        if((r < state.m_boardSize-2 and c < state.m_boardSize-1 and state.m_board[r+2][c+1] == Utils.empty) 
-			or (r < state.m_boardSize-2 and c < state.m_boardSize-1 and state.m_board[r+2][c+1] != Utils.empty and Utils.getColorPiece(state.m_board[r+2][c+1]) == oponent_color)):
-            l.append(Action(state.m_agentPos, Position(r+2,c+1)))
         
         if((r > 1 and c < state.m_boardSize-1 and state.m_board[r-2][c+1] == Utils.empty) 
 			or (r > 1 and c < state.m_boardSize-1 and state.m_board[r-2][c+1] != Utils.empty and Utils.getColorPiece(state.m_board[r-2][c+1]) == oponent_color)):
@@ -39,27 +36,29 @@ class Knight(Piece):
 			or (r > 1 and c > 0 and state.m_board[r-2][c-1] != Utils.empty and Utils.getColorPiece(state.m_board[r-2][c-1]) == oponent_color)):
             l.append(Action(state.m_agentPos, Position(r-2,c-1)))
 
-        if((r < state.m_boardSize-2 and c > 0 and state.m_board[r+2][c-1] == Utils.empty) 
-			or (r < state.m_boardSize-2 and c > 0 and state.m_board[r+2][c-1] != Utils.empty and Utils.getColorPiece(state.m_board[r+2][c-1]) == oponent_color)):
-            l.append(Action(state.m_agentPos, Position(r+2,c-1)))
-        
-        
-
-        if((r > state.m_boardSize-1 and c < state.m_boardSize-2 and state.m_board[r+1][c+2] == Utils.empty) 
-			or (r > state.m_boardSize-1 and c < state.m_boardSize-2 and state.m_board[r+1][c+2] != Utils.empty and Utils.getColorPiece(state.m_board[r+1][c+2]) == oponent_color)):
-            l.append(Action(state.m_agentPos, Position(r+1,c+2)))
-        
         if((r > 0 and c > 1 and state.m_board[r-1][c-2] == Utils.empty) 
 			or (r > 0 and c > 1 and state.m_board[r-1][c-2] != Utils.empty and Utils.getColorPiece(state.m_board[r-1][c-2]) == oponent_color)):
             l.append(Action(state.m_agentPos, Position(r-1,c-2)))
+        
+        if((r > 0 and c < state.m_boardSize-2 and state.m_board[r-1][c+2] == Utils.empty) 
+			or (r > 0 and c < state.m_boardSize-2 and state.m_board[r-1][c+2] != Utils.empty and Utils.getColorPiece(state.m_board[r-1][c+2]) == oponent_color)):
+            l.append(Action(state.m_agentPos, Position(r-1,c+2)))
         
         if((r < state.m_boardSize-1 and c > 1 and state.m_board[r+1][c-2] == Utils.empty) 
 			or (r < state.m_boardSize-1 and c > 1 and state.m_board[r+1][c-2] != Utils.empty and Utils.getColorPiece(state.m_board[r+1][c-2]) == oponent_color)):
             l.append(Action(state.m_agentPos, Position(r+1,c-2)))
         
-        if((r > 0 and c < state.m_boardSize-2 and state.m_board[r-1][c+2] == Utils.empty) 
-			or (r > 0 and c < state.m_boardSize-2 and state.m_board[r-1][c+2] != Utils.empty and Utils.getColorPiece(state.m_board[r-1][c+2]) == oponent_color)):
-            l.append(Action(state.m_agentPos, Position(r-1,c+2)))
+        if((r > state.m_boardSize-1 and c < state.m_boardSize-2 and state.m_board[r+1][c+2] == Utils.empty) 
+			or (r > state.m_boardSize-1 and c < state.m_boardSize-2 and state.m_board[r+1][c+2] != Utils.empty and Utils.getColorPiece(state.m_board[r+1][c+2]) == oponent_color)):
+            l.append(Action(state.m_agentPos, Position(r+1,c+2)))
+        
+        if((r < state.m_boardSize-2 and c < state.m_boardSize-1 and state.m_board[r+2][c+1] == Utils.empty) 
+			or (r < state.m_boardSize-2 and c < state.m_boardSize-1 and state.m_board[r+2][c+1] != Utils.empty and Utils.getColorPiece(state.m_board[r+2][c+1]) == oponent_color)):
+            l.append(Action(state.m_agentPos, Position(r+2,c+1)))
+
+        if((r < state.m_boardSize-2 and c > 0 and state.m_board[r+2][c-1] == Utils.empty) 
+			or (r < state.m_boardSize-2 and c > 0 and state.m_board[r+2][c-1] != Utils.empty and Utils.getColorPiece(state.m_board[r+2][c-1]) == oponent_color)):
+            l.append(Action(state.m_agentPos, Position(r+2,c-1)))
         
 
         return l        
